@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridal Makeup Appointment</title>
+    <link rel="stylesheet" href="appointment.css">
+</head>
+
+<body>
+    <center>
+        <div class="d1">
+            <h1>Bridal Makeup Studio</h1>
+            <label for="firstName">Name:</label> <br>
+            <input type="text" id="firstName" placeholder="Enter your First Name" class="l">
+            <input type="text" id="lastName" placeholder="Enter your Last Name" class="l"> <br><br>
+
+            <label for="email">Email:</label> <br>
+            <input type="email" id="email" placeholder="Enter your Email" class="l"> <br><br>
+
+            <label for="phone">Phone Number:</label> <br>
+            <input type="text" id="phone" placeholder="(000) 000-0000" class="l"> <br><br>
+        </div>
+
+        <div class="d2">
+            <h3>Appointment Information</h3>
+            <label for="makeupType">Confirm your Makeup you want?</label> <br><br>
+            <select id="makeupType">
+                <option value="basic">Basic Makeup Package</option>
+                <option value="luxe">Luxe Makeup Package</option>
+                <option value="hd">HD Finish Bridal Makeup</option>
+                <option value="glass">Glass Finish Bridal Makeup</option>
+                <option value="saree">Saree Draping</option>
+                <option value="hair">Hair Styling</option>
+            </select> <br><br><br>
+
+            <label for="comments">Comments/Notes</label> <br>
+            <textarea id="comments"></textarea> <br><br>
+        </div>
+
+        <div class="d3">
+            <button class="b" onclick="submitForm()">SUBMIT</button>
+        </div>
+    </center>
+
+    <script>
+       function submitForm() {
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                makeupType: document.getElementById('makeupType').value,
+                comments: document.getElementById('comments').value
+            };
+
+            fetch('http://localhost:8080/api/createappointment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to create appointment');
+                    }
+                    return response.text();
+                })
+                .then(() => {
+                    alert('Appointment created successfully!'); // Show success message
+                    window.location.href = 'home.html'; // Redirect to home.html
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to create appointment. Please try again.');
+                });
+        }
+
+    </script>
+</body>
+
+</html>
