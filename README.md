@@ -2,7 +2,7 @@
 
 Before running the Spring Boot project, ensure you have the following installed and configured:
 
-- **MySQL** (Database management system) [Tamil Video to install(https://youtu.be/gsvYvufx1e0?si=g2YNYjSBLIOrROX6)
+- **MySQL** (Database management system) [Tamil Video to install[MySQL](https://youtu.be/gsvYvufx1e0?si=g2YNYjSBLIOrROX6)
 - **IntelliJ IDEA** (Preferred IDE for Java development) [Video to install](https://youtu.be/Z0PYQ3hsdXI?si=K2qWHnARNaXCM5Md)
 - **Java JDK** (Required for running Java applications) [video to install JDK](https://youtu.be/R6MoDMASwag?si=aEQ1VQm1aahHE0ns)
 
